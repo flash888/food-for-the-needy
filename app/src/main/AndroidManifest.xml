@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.Common.Donate_money"></activity>
+        <activity android:name="com.example.user.Thankyou"></activity>
+        <activity android:name="com.example.user.Print_details" />
+        <activity android:name="com.example.user.Food_details" />
+        <activity android:name="com.example.Common.Donate_money" />
         <activity android:name="com.example.Common.Contact" />
         <activity android:name=".Login" />
         <activity android:name=".Register">
