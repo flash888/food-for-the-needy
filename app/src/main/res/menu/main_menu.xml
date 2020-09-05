@@ -16,7 +16,7 @@
         android:icon="@drawable/contact">
 
     </item>
-    <item android:id="@+id/menu1"
+    <item android:id="@+id/donatefood"
         android:title="Donate Food"
         android:icon="@drawable/doante">
 

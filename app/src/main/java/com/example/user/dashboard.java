@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Common.About;
 import com.example.Common.Contact;
+import com.example.Common.Donatefood;
 import com.example.HelperClass.HomeAdapter.FeaturedAdapter;
 import com.example.HelperClass.HomeAdapter.FeaturedAdapter2;
 import com.example.HelperClass.HomeAdapter.FeaturedHelperClass;
@@ -171,6 +172,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId())
         {
+            case R.id.donatefood:
+                startActivity(new Intent(getApplicationContext(), Donatefood.class));
             case R.id.about_us:
                 startActivity(new Intent(getApplicationContext(), About.class));
                 break;

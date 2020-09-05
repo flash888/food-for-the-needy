@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.loginregister">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,6 +19,7 @@
         <activity android:name="com.example.Common.Donate_money" />
         <activity android:name="com.example.Common.Contact" />
         <activity android:name=".Login" />
+        <activity android:name="com.example.Common.Donatefood"/>
         <activity android:name=".Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
