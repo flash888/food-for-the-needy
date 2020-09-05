@@ -8,53 +8,32 @@
     tools:context=".Common.SplashScreen">
 
     <ImageView
-        android:id="@+id/background_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/splash_img"
+        android:id="@+id/im1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
+        app:srcCompat="@drawable/picture1" />
 
     <TextView
-        android:id="@+id/logo_name"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="632dp"
-        android:text="Zero Hunger"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
+        android:id="@+id/textVieww"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/brandongrotesquebolditalic58a8a48221563"
+        android:text="ZERO HUNGER"
+        android:textColor="#000 "
+
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
-
-    <TextView
-        android:id="@+id/powered_by"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="651dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="120dp"
-        android:text="powered_by Varun and Gang"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/im1"
+        app:layout_constraintVertical_bias="0.22000003" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

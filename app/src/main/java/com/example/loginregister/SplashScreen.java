@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SplashScreen extends AppCompatActivity {
 
     protected static boolean val=false;
-    private static int TIMER=2000;
+    private static int TIMER=5000;
     //variables
     TextView logo,poweredby;
     ImageView background;
@@ -25,20 +25,20 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-           //     WindowManager.LayoutParams.FLAG_FULLSCREEN  );
+        //     WindowManager.LayoutParams.FLAG_FULLSCREEN  );
         setContentView(R.layout.splash_main);
 
-        logo=findViewById(R.id.logo_name);
-        poweredby=findViewById(R.id.powered_by);
+        logo=findViewById(R.id.textVieww);
+        //poweredby=findViewById(R.id.powered_by);
 
-        background=findViewById(R.id.background_image);
+        background=findViewById(R.id.im1);
 
-        side= AnimationUtils.loadAnimation(this,R.anim.side_anim);
+        side= AnimationUtils.loadAnimation(this,R.anim.top_anim);
         bottom= AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
 
         background.setAnimation(side);
         logo.setAnimation(bottom);
-        poweredby.setAnimation(bottom);
+        //poweredby.setAnimation(bottom);
 
         new Handler().postDelayed(new Runnable() {
             @Override
