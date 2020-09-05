@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.user.Food_details;
+
 public class SplashScreen extends AppCompatActivity {
 
     protected static boolean val=false;
