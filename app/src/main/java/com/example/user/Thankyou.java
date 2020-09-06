@@ -32,7 +32,7 @@ public class Thankyou extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Thankyou.this, Food_details.class);
+                Intent intent = new Intent(Thankyou.this, dashboard.class);
                 startActivity(intent);
                 finish();
             }

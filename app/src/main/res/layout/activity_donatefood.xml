@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity2"
-    android:background="#F6C224">
+    tools:context="com.example.Common.Donatefood"
+    android:background="#FDFBFAFB">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name"
+            android:id="@+id/textview112"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="290dp"
         android:layout_marginTop="0dp"
-        android:background="#E91E63"
+        android:background="#1EE96F"
         android:text="USE GPS LOCATION"
         android:textColorLink="#C32A2A" />
 
@@ -211,7 +211,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="150dp"
-        android:background="@color/lightwhite"
+        android:background="#00BCD4"
         android:text="SUBMIT"
         android:textColorLink="#C32A2A" />
 

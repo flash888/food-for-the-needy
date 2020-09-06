@@ -21,12 +21,17 @@
         android:icon="@drawable/doante">
 
     </item>
+    <item android:id="@+id/donatemoney"
+        android:title="Donate Money"
+        android:icon="@drawable/doante">
+
+    </item>
 
 
 
 </group>
 
-    <item android:title="profile">
+    <item android:title="Profile">
         <menu>
             <group android:checkableBehavior="single">
 
@@ -53,7 +58,7 @@
 
                 </item>
                 <item android:id="@+id/rate"
-                    android:title="rate us"
+                    android:title="Rate Us"
                     android:icon="@drawable/rate">
 
                 </item>

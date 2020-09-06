@@ -1,6 +1,7 @@
 package com.example.Common;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -23,19 +24,30 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.loginregister.Login;
 import com.example.loginregister.R;
+import com.example.loginregister.Register;
+import com.example.user.Print_details;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.okhttp.internal.DiskLruCache;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -47,14 +59,18 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
     LocationManager locationManager;
     LocationListener locationListener;
     Button button,button1;
-    TextInputEditText name1,fooditem1,quantity1,foodtiming1,address1;
-    TextInputEditText date,time1;
+ public   TextInputEditText name1,fooditem1,quantity1,foodtiming1,address1;
+public    TextInputEditText date,time1;
     TimePickerDialog picker;
-    String currentAdress;
+    String currentAdress,x2;
     FirebaseAuth fauth;
     FirebaseFirestore fb;
+    String user_n,user_e,user_p;
 
-
+ public   String n,time, ft, ftiming, qt, ad,d;
+ String userId;
+ Integer x1=new Integer(0);
+   TextView t1;
 
 
     @Override
@@ -69,12 +85,42 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donatefood);
         fauth=FirebaseAuth.getInstance();
         fb=FirebaseFirestore.getInstance();
-        final String userId = Objects.requireNonNull(fauth.getCurrentUser()).getUid();
-        locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+       // fb1=FirebaseFirestore.getInstance();
+         userId = Objects.requireNonNull(fauth.getCurrentUser()).getUid();
+        fb.collection("don_details").document(userId)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                        @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.i("rohit", "Listen failed.", e);
+                         //   Toast.makeText(getApplicationContext(),"Listen Failed",Toast.LENGTH_LONG).show();
+
+                            return;
+                        }
+                        if (snapshot != null && snapshot.exists()) {
+                            Object players =snapshot.getData().get("no_of_don");
+
+                            x1=Integer.parseInt(players.toString())+1;
+                            Object p2=snapshot.getData().get("name");
+
+                            Log.i("value", ""+players.toString(), e);
+                          //  Toast.makeText(getApplicationContext(),players.toString()+" sub 1 "+x1,Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Log.i("", "Current data: null");
+                          //  Toast.makeText(getApplicationContext(),"current data null",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+
+         locationManager=(LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener=new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
@@ -140,7 +186,7 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
             @Override
             public void onClick(View view) {
                 address1.setText(currentAdress);;
-                button1.setVisibility(0);
+        //        button1.setVisibility(View.VISIBLE);
 
             }
         });
@@ -148,13 +194,16 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String n=name1.getText().toString().trim();
-                String ft=fooditem1.getText().toString().trim();
-                String qt=quantity1.getText().toString().trim();
-                String ad=address1.getText().toString().trim();
-                String ftiming=foodtiming1.getText().toString().trim();
-                String time=time1.getText().toString().trim();
-                String d=date.getText().toString().trim();
+                Print_details pd=new Print_details();
+                 n=name1.getText().toString().trim();
+
+                ft=fooditem1.getText().toString().trim();
+               qt=quantity1.getText().toString().trim();
+               ad=address1.getText().toString().trim();
+                 ftiming=foodtiming1.getText().toString().trim();
+              time=time1.getText().toString().trim();
+                d=date.getText().toString().trim();
+
                 if (TextUtils.isEmpty(n)){
                     name1.setError("Name is required");
                     return;
@@ -181,7 +230,38 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
                     date.setError("This field is required");
                     return;
                 }
-                DocumentReference documentReference=fb.collection("donars").document(userId);
+
+
+
+            //    userId=userId+x1.toString();
+
+             //   Toast.makeText(getApplicationContext(),"  sub2 :"+x1,Toast.LENGTH_LONG).show();
+                int x3=x1;
+                x2=userId+String.valueOf(x3);
+           //     Toast.makeText(getApplicationContext(),"  sub3 "+x2,Toast.LENGTH_LONG).show();
+                DocumentReference documentReference=fb.collection("donars").document(x2);
+              DocumentReference documentReference2=fb.collection("don_details").document(userId);
+
+                Map<String,Object> user=new HashMap<>();
+                user.put("no_of_don",String.valueOf(x1));
+               user.put("name",user_n);
+                user.put("email",user_e);
+                user.put("phone",user_p);
+                documentReference2.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                     //   Toast.makeText(Donatefood.this, "added", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+                String s;
+
+
+                //   Task<DocumentSnapshot> ss=documentReference.get();
+             //   DocumentSnapshot gh=ss.getResult();
+
+
                 Map<String,Object> donar=new HashMap<>();
                 donar.put("fname",n);
                 donar.put("quantity",qt);
@@ -190,13 +270,30 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
                 donar.put("foodTime",ftiming);
                 donar.put("time",time);
                 donar.put("date",d);
+                //Toast.makeText(Donatefood.this, "Half a way", Toast.LENGTH_SHORT).show();
+
+
+
+                //startActivity( new Intent(getApplicationContext(), Print_details.class));
+                //finish();
                 documentReference.set(donar).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(Donatefood.this, "added", Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(Donatefood.this, "added", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(Donatefood.this,Print_details.class);
+                        intent.putExtra("name2",n);
+                        intent.putExtra("fooditem2",ft);
+                        intent.putExtra("quantity2",qt);
+                        intent.putExtra("foodtiming2",ftiming);
+                        intent.putExtra("address2",ad);
+                        intent.putExtra("date2",d);
+                        intent.putExtra("time2",time);
+
+                        startActivity(intent);
+                        finish();
+
                     }
                 });
-
 
 
 
@@ -241,28 +338,12 @@ public class Donatefood extends AppCompatActivity implements DatePickerDialog.On
 
 
 
-       /* button.setOnClickListener(new View.OnClickListener() {
+       /*button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String test=name1.getText().toString().trim();
-                String test1=fooditem1.getText().toString().trim();
-                String test2=quantity1.getText().toString().trim();
-                String test3=foodtiming1.getText().toString().trim();
-                String test4=address1.getText().toString().trim();
-                String test5=date.getText().toString().trim();
-                String test6=time1.getText().toString().trim();
+
 
                 //String hi=test+test1+test2+test3+test4;
-                Intent intent=new Intent(MainActivity2.this,MainActivity3.class);
-                intent.putExtra("name2",test);
-                intent.putExtra("fooditem2",test1);
-                intent.putExtra("quantity2",test2);
-                intent.putExtra("foodtiming2",test3);
-                intent.putExtra("address2",test4);
-                intent.putExtra("date2",test5);
-                intent.putExtra("time2",test6);
-
-                startActivity(intent);
 
 
 

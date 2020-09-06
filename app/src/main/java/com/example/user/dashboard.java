@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Common.About;
 import com.example.Common.Contact;
+import com.example.Common.Donate_money;
 import com.example.Common.Donatefood;
 import com.example.HelperClass.HomeAdapter.FeaturedAdapter;
 import com.example.HelperClass.HomeAdapter.FeaturedAdapter2;
@@ -41,11 +42,12 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
     DrawerLayout drawerLayout;
     NavigationView nav_view;
     //menu button
-    ImageView menu_img;
+    ImageView menu_img, plus_btn;
     //Recycler view
     RecyclerView featuredRecycler;
     RecyclerView featuredRecycler2;
     RecyclerView.Adapter adapter,adapter2;
+
 
 
 
@@ -74,6 +76,14 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         menu_img = findViewById(R.id.menu_img);
 
         navigation_view();
+        plus_btn=findViewById(R.id.plus_button);
+        plus_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Donatefood.class));
+                finish();
+            }
+        });
 
 
 
@@ -83,11 +93,11 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         featuredRecycler2.setHasFixedSize(true);
         featuredRecycler2.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         ArrayList<FeaturedHelperClass2> featuredlocations = new ArrayList<>();
-        featuredlocations.add(new FeaturedHelperClass2(R.drawable.f1,"Over 820 million people suffering from hunger new UN report reveals stubborn realities of ‘immense’ global challenge"));
-        featuredlocations.add(new FeaturedHelperClass2(R.drawable.f1,"divya"));
-        featuredlocations.add(new FeaturedHelperClass2(R.drawable.f1,"divya"));
-        featuredlocations.add(new FeaturedHelperClass2(R.drawable.f1,"divya"));
+        featuredlocations.add(new FeaturedHelperClass2(R.drawable.syria,"WFP also provides food assistance to Syrian refugees who have fled to Iraq."));
+        featuredlocations.add(new FeaturedHelperClass2(R.drawable.covid_usa,"Restuarants donating food during covid 19 in United States of America"));
+        featuredlocations.add(new FeaturedHelperClass2(R.drawable.f1,"Over 820 million people suffering from hunger; \"Global Challenge\""));
 
+        featuredlocations.add(new FeaturedHelperClass2(R.drawable.congo,"Food donation camp conducted by the Congo Government to feed the needy"));
    /*     featuredlocations.add(new FeaturedHelperClass2(R.drawable.g8,""));
         featuredlocations.add(new FeaturedHelperClass2(R.drawable.g4,""));
         featuredlocations.add(new FeaturedHelperClass2(R.drawable.g5,""));
@@ -106,8 +116,8 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         featuredRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         ArrayList<FeaturedHelperClass> featuredlocations = new ArrayList<>();
         featuredlocations.add(new FeaturedHelperClass(R.drawable.g1));
-        featuredlocations.add(new FeaturedHelperClass(R.drawable.g7));
-        featuredlocations.add(new FeaturedHelperClass(R.drawable.g8));
+       // featuredlocations.add(new FeaturedHelperClass(R.drawable.g7));
+        //featuredlocations.add(new FeaturedHelperClass(R.drawable.g8));
         featuredlocations.add(new FeaturedHelperClass(R.drawable.g4));
         featuredlocations.add(new FeaturedHelperClass(R.drawable.g5));
         featuredlocations.add(new FeaturedHelperClass(R.drawable.g6));
@@ -174,6 +184,7 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
         {
             case R.id.donatefood:
                 startActivity(new Intent(getApplicationContext(), Donatefood.class));
+                break;
             case R.id.about_us:
                 startActivity(new Intent(getApplicationContext(), About.class));
                 break;
@@ -191,10 +202,19 @@ public class dashboard extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
+            case R.id.profile:
+                startActivity(new Intent(getApplicationContext(), profile.class));
+                break;
+            case R.id.donatemoney:
+                startActivity(new Intent(getApplicationContext(), Donate_money.class));
+                break;
+
+
 
 
         }
         return true;
+
     }
 
     @Override

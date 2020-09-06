@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.Common.Donatefood;
 import com.example.loginregister.R;
 
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 public class Print_details extends AppCompatActivity {
     TextView name_,fooditem_,quantity_,address_,date_;
     Button button1;
+    public String str1,str2,str3,str4,str5,str6,str7,str8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,20 +28,21 @@ public class Print_details extends AppCompatActivity {
         date_=(TextView)findViewById(R.id.date_);
 
         Intent intent=getIntent();
-        String str1=intent.getStringExtra("name2");
-        String str2=intent.getStringExtra("fooditem2");
-        String str3=intent.getStringExtra("quantity2");
-        String str4=intent.getStringExtra("foodtiming2");
-        String str5=intent.getStringExtra("address2");
-        String str6=intent.getStringExtra("date2");
-        String str7=intent.getStringExtra("time2");
+       str1=intent.getStringExtra("name2");
+      str2=intent.getStringExtra("fooditem2");
+       str3=intent.getStringExtra("quantity2");
+      str4=intent.getStringExtra("foodtiming2");
+       str5=intent.getStringExtra("address2");
+      str6=intent.getStringExtra("date2");
+       str7=intent.getStringExtra("time2");
 
         //String str=str1+" "+str2+" "+str3+" "+str4+" "+str5;
+        Donatefood fd=new Donatefood();
         name_.setText(str1);
         fooditem_.setText(str2);
         quantity_.setText(str3);
         address_.setText(str5);
-        String str8=str6+"\n"+"TIME-"+str7;
+         str8=str6+"\n"+"TIME-"+str7;
         date_.setText(str8);
 
         button1=(Button)findViewById(R.id.bb);

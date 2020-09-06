@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/slogan"
         android:layout_marginLeft="15dp"
-        android:text="Think Big"
+        android:text="Donate Now"
 
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -32,7 +32,7 @@
     <ImageView
         android:layout_width="160dp"
         android:layout_height="175dp"
-        android:src="@drawable/menu_pic"
+        android:src="@drawable/app_logo"
         android:layout_alignParentRight="true"/>
 
 

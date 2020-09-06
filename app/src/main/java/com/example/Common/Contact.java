@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.loginregister.Login;
 import com.example.loginregister.R;
 import com.example.user.dashboard;
+import com.example.user.profile;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,7 +30,7 @@ public class Contact extends AppCompatActivity implements NavigationView.OnNavig
     DrawerLayout drawerLayout;
     NavigationView nav_view;
     //menu button
-    ImageView menu_img;
+    ImageView menu_img, plus_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,14 @@ public class Contact extends AppCompatActivity implements NavigationView.OnNavig
         menu_img = findViewById(R.id.menu_img);
 
         navigation_view();
+        plus_btn=findViewById(R.id.plus_button);
+        plus_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Donatefood.class));
+                finish();
+            }
+        });
 
     }
     private void navigation_view() {
@@ -80,6 +89,9 @@ public class Contact extends AppCompatActivity implements NavigationView.OnNavig
             case R.id.Home:
                 startActivity(new Intent(getApplicationContext(), dashboard.class));
                 break;
+            case R.id.donatefood:
+                startActivity(new Intent(getApplicationContext(), Donatefood.class));
+                break;
             case R.id.about_us:
                 startActivity(new Intent(getApplicationContext(), About.class));
                 break;
@@ -94,6 +106,12 @@ public class Contact extends AppCompatActivity implements NavigationView.OnNavig
                 Ed.apply();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
+                break;
+            case R.id.profile:
+                startActivity(new Intent(getApplicationContext(), profile.class));
+                break;
+            case R.id.donatemoney:
+                startActivity(new Intent(getApplicationContext(), Donate_money.class));
                 break;
         }
         return true;

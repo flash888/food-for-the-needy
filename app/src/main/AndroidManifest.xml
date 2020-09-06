@@ -13,13 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.user.Thankyou"></activity>
+        <activity android:name="com.example.user.profile"></activity>
+        <activity android:name="com.example.user.Thankyou" />
         <activity android:name="com.example.user.Print_details" />
         <activity android:name="com.example.user.Food_details" />
         <activity android:name="com.example.Common.Donate_money" />
         <activity android:name="com.example.Common.Contact" />
         <activity android:name=".Login" />
-        <activity android:name="com.example.Common.Donatefood"/>
+        <activity android:name="com.example.Common.Donatefood" />
         <activity android:name=".Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

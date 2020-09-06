@@ -72,7 +72,8 @@ public class About extends AppCompatActivity implements NavigationView.OnNavigat
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setDescription("Food Hunger is all about our app")
+                .setDescription("Donate Now is an app designed to help the needy by collecting the excess food from houesholds and various functions and redistributing it to the people in need of it. ")
+
 
                 .addGroup("CONNECT WITH US!")
                 .addEmail("varunsimha@gmail.com")

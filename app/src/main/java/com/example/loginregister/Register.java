@@ -1,6 +1,7 @@
 package com.example.loginregister;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,10 +14,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.Common.Donatefood;
+import com.example.user.Print_details;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
     EditText name,email,pass,phone;
@@ -24,6 +36,7 @@ public class Register extends AppCompatActivity {
     TextView loginbtn;
     FirebaseAuth fauth;
     ProgressBar pbar;
+    FirebaseFirestore fb;
 
 
     @Override
@@ -38,8 +51,9 @@ public class Register extends AppCompatActivity {
         loginbtn=findViewById(R.id.textView3);
         pbar=findViewById(R.id.progressBar);
         fauth=FirebaseAuth.getInstance();
+        fb=FirebaseFirestore.getInstance();
         if(fauth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),Login.class));
             finish();
         }
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +67,9 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String Password=pass.getText().toString().trim();
-                String Email=email.getText().toString().trim();
+                final String Email=email.getText().toString().trim();
+                final String Phone=phone.getText().toString().trim();
+                final String  fullname=name.getText().toString();
                 if (TextUtils.isEmpty(Email)){
                     email.setError("Email is required");
                     return;
@@ -63,7 +79,16 @@ public class Register extends AppCompatActivity {
                     return;
                 }
                 if (Password.length()<8){
-                    pass.setError("Passeord must be atleast 8 characters");
+                    pass.setError("Password must be atleast 8 characters");
+                    return;
+                }
+                if(Phone.length()!=10)
+                {
+                    phone.setError("Enter valid phone number");
+                    return;
+                }
+                if (TextUtils.isEmpty(fullname)){
+                    name.setError("fullname is required");
                     return;
                 }
                 pbar.setVisibility(View.VISIBLE);
@@ -72,7 +97,40 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(Register.this, "Created Succesfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
+                           String userId=fauth.getCurrentUser().getUid();
+                            DocumentReference documentReference2=fb.collection("user").document(userId);
+
+                            Map<String,Object> user=new HashMap<>();
+                            user.put("name",fullname);
+                           user.put("email",Email);
+                            user.put("phone",Phone);
+                            user.put("no_of_don","0");
+                            documentReference2.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                   // Toast.makeText(Register.this, "added", Toast.LENGTH_SHORT).show();
+                                  //  startActivity( new Intent(getApplicationContext(), Login.class));
+                                   // finish();
+
+                                }
+                            });
+                            DocumentReference documentReference3=fb.collection("don_details").document(userId);
+                            Map<String,Object> user1=new HashMap<>();
+
+                            user1.put("no_of_don","0");
+                            documentReference3.set(user1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                   // Toast.makeText(Register.this, "added", Toast.LENGTH_SHORT).show();
+                                    //startActivity( new Intent(getApplicationContext(), Login.class));
+                                    //finish();
+
+                                }
+                            });
+                            startActivity(new Intent(getApplicationContext(),Login.class));
+                            finish();
+
                             SplashScreen.val=true;
                         }
                         else{

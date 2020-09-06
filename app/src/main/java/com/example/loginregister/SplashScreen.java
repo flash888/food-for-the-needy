@@ -10,17 +10,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.user.Food_details;
-
 public class SplashScreen extends AppCompatActivity {
 
     protected static boolean val=false;
-    private static int TIMER=5000;
+    private static int TIMER=2000;
     //variables
-    TextView logo,poweredby;
+    TextView logo, quote, name1;
     ImageView background;
     //animations
-    Animation side, bottom;
+    Animation side, top, bottom1, bottom2;
 
 
     @Override
@@ -34,12 +32,18 @@ public class SplashScreen extends AppCompatActivity {
         //poweredby=findViewById(R.id.powered_by);
 
         background=findViewById(R.id.im1);
+        quote=findViewById(R.id.textView7);
+        name1=findViewById(R.id.textView10);
 
-        side= AnimationUtils.loadAnimation(this,R.anim.top_anim);
-        bottom= AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
+        side= AnimationUtils.loadAnimation(this,R.anim.side_anim);
+        top= AnimationUtils.loadAnimation(this,R.anim.top_anim);
+        bottom1= AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
+        bottom2= AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
 
         background.setAnimation(side);
-        logo.setAnimation(bottom);
+        logo.setAnimation(top);
+        quote.setAnimation(bottom1);
+        name1.setAnimation(bottom2);
         //poweredby.setAnimation(bottom);
 
         new Handler().postDelayed(new Runnable() {
