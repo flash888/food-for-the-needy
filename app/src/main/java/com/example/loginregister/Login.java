@@ -1,8 +1,10 @@
 package com.example.loginregister;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,25 +20,32 @@ import android.widget.Toast;
 
 import com.example.user.dashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
 
     EditText email1,password;
+
     Button loginbtn;
     ProgressBar pbar;
     FirebaseAuth fauth;
     TextView newuser;
     CheckBox remember;
+    TextView forgotpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        fauth=FirebaseAuth.getInstance();
+        FirebaseUser user=fauth.getCurrentUser();
 
         final boolean[] val = {false};
         email1=findViewById(R.id.email);
@@ -45,8 +54,50 @@ public class Login extends AppCompatActivity {
         pbar=findViewById(R.id.progressBar2);
         newuser=findViewById(R.id.textView5);
         remember=findViewById(R.id.remember);
-        fauth=FirebaseAuth.getInstance();
+        forgotpass=findViewById(R.id.forgotpass);
 
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText resetmail=new EditText(v.getContext());
+                AlertDialog.Builder passwordresetdialog =new AlertDialog.Builder(v.getContext());
+                passwordresetdialog.setTitle("reset password");
+                passwordresetdialog.setMessage("enter email");
+                passwordresetdialog.setView(resetmail);
+                passwordresetdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String mail=resetmail.getText().toString().trim();
+                        fauth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(Login.this, "Rest mail sent succesfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Login.this, "unsucessful "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    }
+                });
+                passwordresetdialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                passwordresetdialog.create().show();
+            }
+        });
+        newuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(Login.this, "xx", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),Register.class));
+            }
+        });
         SharedPreferences preferences=getSharedPreferences("checkbox",MODE_PRIVATE);
        String checkbox= preferences.getString("remember","");
        if(checkbox.equals("true"))
@@ -60,12 +111,7 @@ public class Login extends AppCompatActivity {
            Toast.makeText(Login.this, "Please sign in", Toast.LENGTH_SHORT).show();
        }
 
-        newuser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Register.class));
-            }
-        });
+
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,10 +126,13 @@ public class Login extends AppCompatActivity {
                     return;
                 }
                 if (Password.length()<8){
-                    password.setError("Passeord must be atleast 8 characters");
+                    password.setError("Password must be atleast 8 characters");
                     return;
                 }
                 pbar.setVisibility(View.VISIBLE);
+
+
+
 
                 fauth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -91,8 +140,14 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()){
                             SplashScreen.val=true;
                             pbar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
                             val[0] =true;
+                            FirebaseUser user=fauth.getCurrentUser();
+                            if(!user.isEmailVerified()){
+                                Toast.makeText(Login.this, "user not verified", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), dashboard.class));
                             finish();
 
