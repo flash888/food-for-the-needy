@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.ac_login);
         fauth=FirebaseAuth.getInstance();
         FirebaseUser user=fauth.getCurrentUser();
 
@@ -61,8 +61,8 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 final EditText resetmail=new EditText(v.getContext());
                 AlertDialog.Builder passwordresetdialog =new AlertDialog.Builder(v.getContext());
-                passwordresetdialog.setTitle("reset password");
-                passwordresetdialog.setMessage("enter email");
+                passwordresetdialog.setTitle("Reset Password");
+                passwordresetdialog.setMessage("Enter Email");
                 passwordresetdialog.setView(resetmail);
                 passwordresetdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -96,6 +96,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(Login.this, "xx", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),Register.class));
+                finish();
             }
         });
         SharedPreferences preferences=getSharedPreferences("checkbox",MODE_PRIVATE);

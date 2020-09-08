@@ -17,4 +17,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_login1">Login1</string>
 
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+
 </resources>

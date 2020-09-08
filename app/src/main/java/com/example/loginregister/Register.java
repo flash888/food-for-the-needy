@@ -1,7 +1,6 @@
 package com.example.loginregister;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,8 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.Common.Donatefood;
-import com.example.user.Print_details;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,10 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,24 +38,25 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.ac_register);
         name=findViewById(R.id.FullName);
         email=findViewById(R.id.email);
         pass=findViewById(R.id.password1);
         phone=findViewById(R.id.Phone);
         register=findViewById(R.id.button);
         loginbtn=findViewById(R.id.textView3);
-        pbar=findViewById(R.id.progressBar);
+       pbar=findViewById(R.id.progressBar);
         fauth=FirebaseAuth.getInstance();
         fb=FirebaseFirestore.getInstance();
         if(fauth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),Login.class));
-            finish();
+            //startActivity(new Intent(getApplicationContext(),Login.class));
+            //finish();
         }
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Login.class));
+                finish();
             }
         });
 
@@ -93,7 +88,7 @@ public class Register extends AppCompatActivity {
                     name.setError("fullname is required");
                     return;
                 }
-                pbar.setVisibility(View.VISIBLE);
+               pbar.setVisibility(View.VISIBLE);
                 fauth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -148,7 +143,7 @@ public class Register extends AppCompatActivity {
                             SplashScreen.val=true;
                         }
                         else{
-                            pbar.setVisibility(View.INVISIBLE);
+                           pbar.setVisibility(View.INVISIBLE);
                             Toast.makeText(Register.this, "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }

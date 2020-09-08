@@ -32,6 +32,7 @@ import com.example.loginregister.Login;
 import com.example.loginregister.R;
 import com.example.loginregister.Register;
 import com.example.user.Print_details;
+import com.example.user.dashboard;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -369,5 +370,13 @@ public    TextInputEditText date,time1;
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String datee = dayOfMonth + "-" +( month+1) + "-" + year;
         date.setText(datee);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(getApplicationContext(), dashboard.class));
+        finish();
+        super.onBackPressed();
     }
 }

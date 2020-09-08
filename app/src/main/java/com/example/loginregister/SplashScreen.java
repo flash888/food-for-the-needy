@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.user.dashboard;
+
 public class SplashScreen extends AppCompatActivity {
 
     protected static boolean val=false;
@@ -57,7 +59,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else
                 {
-                    Intent newActivity=new Intent(getApplicationContext(), MainActivity.class);
+                    Intent newActivity=new Intent(getApplicationContext(), dashboard.class);
                     startActivity(newActivity);
                     finish();
                 }
