@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.user.MoneyUpi;
 import com.example.user.dashboard;
 
 public class SplashScreen extends AppCompatActivity {
@@ -53,7 +54,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 if(val==false)
                 {
-                    Intent newActivity=new Intent(getApplicationContext(), Login.class);
+                    Intent newActivity=new Intent(getApplicationContext(), MoneyUpi.class);
                     startActivity(newActivity);
                     finish();
                 }

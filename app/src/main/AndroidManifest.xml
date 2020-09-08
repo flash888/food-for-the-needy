@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.user.profile"></activity>
+        <activity android:name="com.example.user.MoneyUpi"></activity>
+        <activity android:name="com.example.user.profile" />
         <activity android:name="com.example.user.Thankyou" />
         <activity android:name="com.example.user.Print_details" />
         <activity android:name="com.example.user.Food_details" />
