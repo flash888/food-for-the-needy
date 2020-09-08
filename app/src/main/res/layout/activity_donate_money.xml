@@ -10,55 +10,55 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="439dp"
+        android:layout_width="match_parent"
         android:layout_height="67dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="603dp"
+
+
+        android:layout_marginTop="0dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="220dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="610dp"
-        android:fontFamily="sans-serif"
-        android:text="Donate Money"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="220dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="122dp"
+            android:layout_marginBottom="662dp"
+            android:fontFamily="sans-serif"
+            android:text="Donate Money"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.appcompat.widget.Toolbar>
+
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="165dp"
-        android:layout_height="40dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="123dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="123dp"
         android:layout_marginBottom="499dp"
         android:lineSpacingExtra="8sp"
         android:text="Bank Details"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,11 +66,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView143"
         android:layout_width="215dp"
         android:layout_height="49dp"
         android:layout_marginStart="188dp"
-        android:layout_marginTop="178dp"
+        android:layout_marginTop="188dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="432dp"
         android:lineSpacingExtra="12sp"
@@ -127,8 +127,8 @@
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="187dp"
-        android:layout_height="48dp"
+        android:layout_width="178dp"
+        android:layout_height="38dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="178dp"
         android:layout_marginEnd="223dp"
@@ -147,10 +147,10 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="187dp"
-        android:layout_height="48dp"
+        android:layout_width="180dp"
+        android:layout_height="41dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="358dp"
+        android:layout_marginTop="348dp"
         android:layout_marginEnd="223dp"
         android:layout_marginBottom="433dp"
         android:lineSpacingExtra="12sp"
@@ -267,17 +267,17 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="463dp"
-        android:layout_marginEnd="172dp"
-        android:layout_marginBottom="148dp"
-        android:text="Pay through UPI"
+        style="@style/loginButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="442dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="163dp"
+        android:text="Pay through upi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorAccent"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

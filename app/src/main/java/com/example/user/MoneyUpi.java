@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.Common.Donate_money;
 import com.example.loginregister.R;
 
 import java.time.Duration;
@@ -39,6 +40,7 @@ public class MoneyUpi extends AppCompatActivity {
         name = (EditText) findViewById(R.id.name);
         upivirtualid =(EditText) findViewById(R.id.upi_id);
         upivirtualid.setText("paipuri.lokesh@okicici");
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +164,8 @@ public class MoneyUpi extends AppCompatActivity {
                 //Code to handle successful transaction here.
                 Toast.makeText(MoneyUpi.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
                 Log.e("UPI", "payment successfull: "+approvalRefNo);
+                startActivity(new Intent(getApplicationContext(), Donate_money.class));
+                finish();
             }
             else if("Payment cancelled by user.".equals(paymentCancel)) {
                 Toast.makeText(MoneyUpi.this, "Payment cancelled by user.", Toast.LENGTH_SHORT).show();

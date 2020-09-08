@@ -58,7 +58,7 @@
         <CheckBox
             android:id="@+id/remember"
             style="@style/viewParent"
-
+                android:buttonTint="@color/graylight"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/newsMoreTextSize"
             android:layout_gravity="start"

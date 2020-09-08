@@ -24,7 +24,7 @@ public class profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.ac_profile);
         name=findViewById(R.id.user_name);
         email=findViewById(R.id.email);
         phone=findViewById(R.id.phone);

@@ -15,4 +15,8 @@
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+    <color name="graylight">#BEBEBE</color>
+    <color name="startblue">#37FDFC</color>
+    <color name="endblue">#00EEEE</color>
+    <color name="colorAccent2">#D81B60</color>
 </resources>
