@@ -54,7 +54,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 if(val==false)
                 {
-                    Intent newActivity=new Intent(getApplicationContext(), MoneyUpi.class);
+                    Intent newActivity=new Intent(getApplicationContext(), Login.class);
                     startActivity(newActivity);
                     finish();
                 }
