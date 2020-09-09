@@ -195,15 +195,15 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="440dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="0dp"
                         android:text="Having a diet which is both sufficient in terms of energy (caloric) requirements and diverse to meet additional nutritional needs is essential for good health. Undernourishment, especially in children and mothers, is a leading risk factor for death and other health consequences."
                         android:textAlignment="textStart"
                         android:textColor="@color/black"
@@ -213,7 +213,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="340dp"
                     android:orientation="vertical">
                     <TextView
@@ -235,12 +235,12 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="440dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
@@ -252,12 +252,12 @@
                     </TextView>
                 </RelativeLayout>
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="20dp"
@@ -270,7 +270,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="350dp"
                     android:orientation="horizontal">
 
@@ -286,7 +286,7 @@
                         android:id="@+id/textView19"
                         android:layout_marginTop="30dp"
                         android:paddingTop="50dp"
-                        android:layout_width="208dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="282dp"
                         android:textSize="18sp"
                         android:textColor="@color/black"
@@ -296,7 +296,7 @@
 
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="360dp"
                     android:orientation="horizontal">
 
@@ -310,7 +310,7 @@
 
                     <TextView
                         android:id="@+id/textView20"
-                        android:layout_width="208dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="282dp"
                         android:layout_marginTop="30dp"
                         android:paddingTop="50dp"
@@ -321,7 +321,7 @@
                         android:textSize="18sp"></TextView>
                 </LinearLayout>
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="0dp"
