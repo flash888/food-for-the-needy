@@ -16,7 +16,7 @@ import com.example.user.dashboard;
 public class SplashScreen extends AppCompatActivity {
 
     protected static boolean val=false;
-    private static int TIMER=2000;
+    private static int TIMER=5000;
     //variables
     TextView logo, quote, name1;
     ImageView background;
